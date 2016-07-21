@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<meta name="description" content="Using sap.ui.core.template schema">
+
+<script src="resources/sap-ui-core.js" id="sap-ui-bootstrap"
+	data-sap-ui-libs="sap.m" data-sap-ui-theme="sap_bluecrystal">
+	
+</script>
+<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+<script src="http://localhost:9090/API/requirejs/require.js"></script>
+<script>
+	debugger;
+	var baseUrl = "http://localhost:9090/hp/";
+	jQuery.sap.registerResourcePath("hpp", "proxy/http/localhost:9090/hp/");
+	var view = sap.ui.view({
+		type : sap.ui.core.mvc.ViewType.XML,
+		viewName : "hpp.FragmentTest"
+	});
+	console.log(view);
+	view.placeAt("content");
+	/* require([ baseUrl + "FragmentTest.view.xml",
+			baseUrl + "FragmentTest.controller.js" ], function() {
+		jQuery.sap.registerResourcePath("hpp", "proxy/http/localhost:9090/hp/");
+		var view = sap.ui.view({
+			type : sap.ui.core.mvc.ViewType.XML,
+			viewName : "hpp.FragmentTest"
+		});
+		console.log(view);
+		view.placeAt("content");
+	}); */
+
+	/* var view = sap.ui.view({
+		type : sap.ui.core.mvc.ViewType.XML,
+		viewName : "dynamicfragment.FragmentTest"
+	}); */
+	/* var oModel = new sap.ui.model.odata.v2.ODataModel(
+			"proxy/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/",
+			{
+				annotationURI : "proxy/sap/opu/odata/IWFND/CATALOGSERVICE;v=2"
+						+ "/Annotations(TechnicalName='ZANNO4SAMPLE_ANNO_MDL',Version='0001')/$value",
+				json : true,
+				loadMetadataAsync : true
+			}), oMetaModel = oModel.getMetaModel(), sPath = "/ProductSet('HT-1021')/ToSupplier";
+
+	sap.ui.localResources("dynamicfragment");
+	var app = new sap.m.App({
+		initialPage : "idFragmentTest1"
+	});
+	//var page = sap.ui.view({id:"idFragmentTest1", viewName:"dynamicfragment.FragmentTest", type:sap.ui.core.mvc.ViewType.XML});
+	var oTemplateView = sap.ui.view({
+		preprocessors : {
+			xml : {
+				bindingContexts : {
+					meta : oMetaModel.getMetaContext(sPath)
+				},
+				models : {
+					meta : oMetaModel
+				}
+			}
+		},
+		type : sap.ui.core.mvc.ViewType.XML,
+		viewName : "dynamicfragment.FragmentTest"
+	});
+	app.addPage(oTemplateView);
+	app.placeAt("content"); */
+	/* sap.ui.localResources("dynamicfragment");
+	var modelObj = {
+			geometry : [ "POINT", "LINE", "POLYGON" ]
+		}
+	oMetaModel = new sap.ui.model.json.JSONModel(modelObj);
+	var oTemplateView = sap.ui.view({
+	    preprocessors: {
+	      xml: {
+	        bindingContexts: {
+	          meta: oMetaModel.getMetadata()
+	        },
+	        models: {
+	          meta: oMetaModel
+	        }
+	      }
+	    },
+	    type: sap.ui.core.mvc.ViewType.XML,
+	    viewName: "dynamicfragment.FragmentTest"
+	  }); */
+</script>
+
+</head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>
