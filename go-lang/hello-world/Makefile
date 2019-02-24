@@ -8,15 +8,20 @@ EXENAME=main
 
 export GOPATH := $(shell pwd)
 
-build:
-	@echo Build Started...
-	$(GOINSTALL) $(EXENAME)
-	@echo Build Success..
+all: buildtree build docker-build
 
 buildtree:
 	@echo Creating build tree...
-	@if [ ! -d $(BUILDPATH)/bin ] then mkdir -p $(BUILDPATH)/bin : fi
-	@if [ ! -d $(BUILDPATH)/pkg ] then mkdir -p $(BUILDPATH)/pkg : fi
+	@if [ ! -d $(BUILDPATH)/bin ] ; then mkdir -p $(BUILDPATH)/bin ; fi
+	@if [ ! -d $(BUILDPATH)/pkg ] ; then mkdir -p $(BUILDPATH)/pkg ; fi
 
-all : build
+build:
+	@echo Build Started...
+	@$(GOINSTALL) $(EXENAME)
+	@if [ $$? != 0 ] ; then echo "Build failed" exit 1 ; fi
+	@echo Build Success..
 
+docker-build:
+	docker build -t go-hello .
+	@echo Image built successfully
+	
