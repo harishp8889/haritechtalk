@@ -1,27 +1,24 @@
-BUILDPATH=$(pwd)
 GO := $(shell which go)
 GOINSTALL=$(GO) install
-GOCLEAN=$(GO) clean
-GOGET=$(GO) get
 
-EXENAME=main
+EXENAME=hello/main
 
 export GOPATH := $(shell pwd)
+export GOBIN := $(shell pwd)/bin
 
-all: buildtree build docker-build
+all: dep build docker-build
 
-buildtree:
-	@echo Creating build tree...
-	@if [ ! -d $(BUILDPATH)/bin ] ; then mkdir -p $(BUILDPATH)/bin ; fi
-	@if [ ! -d $(BUILDPATH)/pkg ] ; then mkdir -p $(BUILDPATH)/pkg ; fi
+dep:
+	@echo Resolving dependencies...	
+	@cd src/hello && dep ensure
 
 build:
-	@echo Build Started...
+	@echo Build Started...	
 	@$(GOINSTALL) $(EXENAME)
 	@if [ $$? != 0 ] ; then echo "Build failed" exit 1 ; fi
 	@echo Build Success..
 
 docker-build:
-	docker build -t go-hello .
+	@echo Building docker image...
+	@docker build -t go-hello .
 	@echo Image built successfully
-	
