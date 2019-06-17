@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package rpc2;
+option go_package = "rpc2";
+
+//service definition.
+service RpcCommunicator2
+{
+  rpc getRpc2Msg(RequestParams) returns (Rpc2Reply) {}
+}
+
+// The response message
+message Rpc2Reply 
+{
+  string rpc2_msg = 1;
+}
+
+//Empty message for request header since currently there are no request params
+message RequestParams {}
+
