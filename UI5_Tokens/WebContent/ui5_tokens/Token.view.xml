@@ -1,9 +1,0 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="ui5_tokens.Token" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="Title">
-		<content>
-			<MultiInput id="m1" showSuggestion="true" suggest="_enableSuggest"
-				 tokenChange="_multiInpChanged" />
-		</content>
-	</Page>
-</core:View>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<script data-dojo-config="async: 1"
+	src="https://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"></script>
+
+<script id="sap-ui-bootstrap"
+	src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+	data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.commons,sap.ui.ux3"
+	data-sap-ui-theme="sap_bluecrystal"
+	data-sap-ui-xx-bindingSyntax="complex"
+	data-sap-ui-resourceroots='{"root": "./"}' data-sap-ui-debug="false">
+	
+</script>
+<body>
+	<script>
+	new sap.ui.jsview("root.main").placeAt("content");
+	</script>
+	<div id='content'></div>
+</body>
+</html>
